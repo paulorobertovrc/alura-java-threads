@@ -1,4 +1,4 @@
-package br.com.alura.threads;
+package br.com.alura.threads.calculador;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
