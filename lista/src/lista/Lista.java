@@ -7,7 +7,19 @@ public class Lista {
 	
 	public synchronized void adicionarElementos(String elemento) {
 		this.elementos[indice] = elemento;
-		this.indice++;			
+		this.indice++;
+		
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		if (this.estaCheia()) {
+			System.out.println("a lista está cheia - notificando");
+			this.notify();
+		}
+		
 	}
 	
 	public int tamanho() {
@@ -17,4 +29,9 @@ public class Lista {
 	public String pegarElemento(int posicao) {
 		return this.elementos[posicao];
 	}
+
+	public boolean estaCheia() {
+		return this.indice == this.elementos.length;
+	}
+	
 }
